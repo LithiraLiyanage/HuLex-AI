@@ -70,3 +70,9 @@ class Rewrite(Base):
         "Document",
         back_populates="rewrites"
     )
+
+    feedback = relationship(
+    "Feedback",
+    back_populates="rewrite",
+    cascade="all, delete-orphan"
+)
