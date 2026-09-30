@@ -53,13 +53,13 @@ class User(Base):
     )
 
     style_profiles = relationship(
-    "StyleProfile",
-    back_populates="user",
-    cascade="all, delete-orphan"
-)
+        "StyleProfile",
+        back_populates="user",
+        cascade="all, delete-orphan"
+    )
 
-feedback = relationship(
-    "Feedback",
-    back_populates="user",
-    cascade="all, delete-orphan"
-)
+    feedback = relationship(
+        "Feedback",
+        back_populates="user",
+        cascade="all, delete-orphan"
+    )
