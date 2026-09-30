@@ -57,3 +57,15 @@ class Document(Base):
         "User",
         back_populates="documents"
     )
+
+    analysis_results = relationship(
+    "AnalysisResult",
+    back_populates="document",
+    cascade="all, delete-orphan"
+)
+
+rewrites = relationship(
+    "Rewrite",
+    back_populates="document",
+    cascade="all, delete-orphan"
+)
