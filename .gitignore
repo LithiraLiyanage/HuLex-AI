@@ -1,0 +1,32 @@
+# Environment variables and secrets
+.env
+.env.local
+.env.production
+
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# ML datasets
+ai-models/human-ai-detector/data/*.csv
+ai-models/human-ai-detector/data/*.jsonl
+
+# Trained ML models
+ai-models/human-ai-detector/artifacts/*.joblib
+
+# Frontend dependencies
+node_modules/
+dist/
+.next/
+
+# IDE and system files
+.vscode/
+.DS_Store
+ai-models/human-ai-detector/data/*.csv
+ai-models/human-ai-detector/data/*.jsonl
+ai-models/human-ai-detector/artifacts/*.joblib

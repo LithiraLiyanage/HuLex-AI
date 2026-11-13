@@ -1,0 +1,11 @@
+{
+    "accuracy": 0.9765,
+    "precision": 0.9676153091265947,
+    "recall": 0.986,
+    "f1_score": 0.9767211490837048,
+    "roc_auc": 0.9981140000000001,
+    "train_samples": 8000,
+    "test_samples": 2000,
+    "train_groups": 4000,
+    "test_groups": 1000
+}
