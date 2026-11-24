@@ -1,0 +1,21 @@
+name: HuLex checks
+on:
+  push:
+  pull_request:
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check frontend/assets/site.js
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Check Python syntax
+        run: python -m compileall -q backend/app tests
+      - name: Run offline rewrite unit tests
+        working-directory: backend
+        run: python -m unittest discover -s ../tests -v

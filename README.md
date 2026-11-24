@@ -6,7 +6,7 @@ HuLex is an editorial-style writing application built with a Python/FastAPI back
 
 ## Interface
 
-A quiet, modern workspace, designed with deliberate typography, botanical greens, and purposeful layouts. Responsive on mobile, tablet, and desktop. Framework-free frontend (HTML/CSS/JavaScript) means no npm install is required for local use.
+A quiet, modern workspace, designed with deliberate typography, cobalt blue, signal red, and ink black, and purposeful layouts. Responsive on mobile, tablet, and desktop. Framework-free frontend (HTML/CSS/JavaScript) means no npm install is required for local use.
 
 ## Core functions
 
@@ -16,6 +16,7 @@ A quiet, modern workspace, designed with deliberate typography, botanical greens
 - Protected writing-pattern classifier at `/api/ml/detect`
 - Document library backed by PostgreSQL through your existing FastAPI routes
 - Settings and simple writing preferences
+- Password visibility and strength hints, account validation, revision adoption, unsaved-draft warnings, and Ctrl/Cmd+S to save
 - Rewrite API at `/api/rewrite` (offline basic substitutions, or optional API-based model rewriting)
 
 ## Local run
@@ -38,8 +39,19 @@ The classification baseline was trained on balanced HC3 human/AI answer pairs us
 
 ## Development status and limitations
 
-This upgraded frontend is integrated against the known working endpoints; verify API compatibility with the exact state of your local repository. The API-backed rewrite is an optional provider integration, with a light offline fallback; semantic preservation is **not automatically certified**. Full production deployment requires SSL/TLS, security review, robust credential/session management, full API integration testing, rate limiting, and proper persistence for rewritten drafts, style profiles, and feedback.
+This upgraded frontend is integrated against the known working endpoints; verify API compatibility with the exact state of your local repository. The Signal redesign is delivered in a review branch; run the smoke checks below before merging. The API-backed rewrite is an optional provider integration, with a light offline fallback; semantic preservation is **not automatically certified**. Full production deployment requires SSL/TLS, security review, robust credential/session management, full API integration testing, rate limiting, and proper persistence for rewritten drafts, style profiles, and feedback.
 
 ## Stack
 
 FastAPI · PostgreSQL · SQLAlchemy · Alembic · scikit-learn · HTML/CSS/JavaScript
+
+## Smoke checks
+
+From the repository root, with Node.js installed: `node --check frontend/assets/site.js`.
+From backend with its virtual environment active: `python -m unittest discover -s ../tests -v`.
+
+In a browser at /app: register with a display name and unique email, sign in, create a draft, save, reopen from library, analyze a 30+ word draft, refine, apply revision, export, sign out, and verify the draft is not visible to another account. Check narrow mobile layout, keyboard focus, and reduced-motion settings. The local detector artifact and PostgreSQL are needed for full integration checks. No model API key is required for offline polish. Model rewriting sends text to the configured provider; review its privacy terms before enabling it.
+
+## Local model rewriting
+
+Install Ollama from https://ollama.com/download/windows and run `ollama pull qwen2.5:7b`. Keep Ollama running, then restart FastAPI. No paid API key is required. For lower-memory PCs, set `HULEX_OLLAMA_MODEL=qwen2.5:3b` in backend/.env and pull that model instead; quality may be lower. Explicit `HULEX_REWRITE_PROVIDER=ollama` selects local rewriting even if a cloud key exists. Model availability, memory and response time depend on the PC. Unchanged revisions, changed numeric tokens, and incorrect length direction trigger one retry; a failed retry returns an error instead of fake success. This is not a semantic equivalence guarantee.
