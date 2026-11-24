@@ -51,3 +51,7 @@ From the repository root, with Node.js installed: `node --check frontend/assets/
 From backend with its virtual environment active: `python -m unittest discover -s ../tests -v`.
 
 In a browser at /app: register with a display name and unique email, sign in, create a draft, save, reopen from library, analyze a 30+ word draft, refine, apply revision, export, sign out, and verify the draft is not visible to another account. Check narrow mobile layout, keyboard focus, and reduced-motion settings. The local detector artifact and PostgreSQL are needed for full integration checks. No model API key is required for offline polish. Model rewriting sends text to the configured provider; review its privacy terms before enabling it.
+
+## Local model rewriting
+
+Install Ollama from https://ollama.com/download/windows and run `ollama pull qwen2.5:7b`. Keep Ollama running, then restart FastAPI. No paid API key is required. For lower-memory PCs, set `HULEX_OLLAMA_MODEL=qwen2.5:3b` in backend/.env and pull that model instead; quality may be lower. Explicit `HULEX_REWRITE_PROVIDER=ollama` selects local rewriting even if a cloud key exists. Model availability, memory and response time depend on the PC. Unchanged revisions, changed numeric tokens, and incorrect length direction trigger one retry; a failed retry returns an error instead of fake success. This is not a semantic equivalence guarantee.
