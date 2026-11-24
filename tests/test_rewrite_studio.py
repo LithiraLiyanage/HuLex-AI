@@ -14,6 +14,10 @@ class TestLocalPolish(unittest.TestCase):
         self.assertIn('2026', result)
         self.assertIn('42', result)
 
+    def test_preserves_paragraph_breaks(self):
+        text = 'First paragraph.\n\nSecond paragraph.'
+        self.assertEqual(local_polish(text, 'Natural', 'Balanced'), text)
+
     def test_plain_text_unchanged(self):
         text = 'The team delivered the report on Friday.'
         self.assertEqual(local_polish(text, 'Natural', 'Balanced'), text)

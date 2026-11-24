@@ -510,3 +510,5 @@ body{background:var(--bg);color:var(--ink)}
 .form-row:has(#auth-pass){position:relative}.form-row:has(#auth-pass) .field{padding-right:66px}.password-toggle{position:absolute;right:9px;bottom:8px;min-height:34px;padding:0 10px;border:0;border-radius:6px;background:#edf2ff;color:#2448a5;font-size:12px;font-weight:700}.password-feedback{margin:-4px 0 20px}.password-feedback meter{width:100%;height:9px;accent-color:#2457d6}.password-feedback .form-hint{margin:6px 0}.auth-switch button{min-height:32px}.field:user-invalid{border-color:#df3c4f}.notice-error{font-size:13px}
 
 .revision-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.revision-actions button{font-size:11px;min-height:30px}.editor-footer{flex-wrap:wrap;gap:8px}.editor-textarea:disabled{opacity:.8;cursor:wait}
+
+.rewrite-note{padding:12px 14px;background:#edf2ff;border:1px solid #d7e3ff;border-radius:8px;color:#294483}
