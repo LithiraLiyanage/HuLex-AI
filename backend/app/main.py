@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+﻿from fastapi import FastAPI
 from app.api.routes import ml_detector
 from app.api.routes.auth import router as auth_router
 from app.api.routes.health import router as health_router
@@ -27,3 +27,8 @@ def root():
         "message": "Welcome to HumanFlow AI",
         "status": "running"
     }
+from app.api.routes import rewrite_studio
+from app.ui import mount_site
+app.include_router(rewrite_studio.router, prefix='/api/rewrite', tags=['Writing Studio'])
+mount_site(app)
+
