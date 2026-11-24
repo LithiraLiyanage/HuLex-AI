@@ -30,3 +30,4 @@ dist/
 ai-models/human-ai-detector/data/*.csv
 ai-models/human-ai-detector/data/*.jsonl
 ai-models/human-ai-detector/artifacts/*.joblib
+frontend/assets/site.backup-*.css
